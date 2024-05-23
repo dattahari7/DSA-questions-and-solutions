@@ -1,6 +1,6 @@
 # DSA Questions and Answers Repository
 
-[DSA](Images/dsa.png)
+![](Images/dsa.png)
 
 Welcome to the **DSA Questions and Answers Repository**! This repository is a comprehensive collection of questions and solutions related to Data Structures and Algorithms (DSA). Whether you're a student preparing for exams, a developer preparing for technical interviews, or simply someone looking to improve your problem-solving skills, this repository is designed to be a valuable resource.
 
