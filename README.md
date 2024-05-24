@@ -47,6 +47,6 @@ You are free to use, modify, and distribute the code as long as you provide attr
 To get started, clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/dsa-questions-and-answers.git
+git clone https://github.com/dattahari7/DSA-questions-and-solutions.git
 ```
 Happy Coding!
