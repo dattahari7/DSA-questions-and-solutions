@@ -79,3 +79,53 @@ class Solution:
 # Time Complexity: O(N * N)
 # Space Complexity: O(N) only recursive stack space
                 
+# Optimal Solution (using union find)
+
+class DisjointSetUnion:
+    def __init__(self, n):
+        # Initialize parent array where each node is its own parent
+        self.parent = list(range(n + 1))
+        # Initialize sizes of each set to 1
+        self.size = [1] * (n + 1)
+
+    def find(self, u):
+        # Find with path compression
+        if self.parent[u] != u:
+            self.parent[u] = self.find(self.parent[u])
+        return self.parent[u]
+
+    def union(self, u, v):
+        # Union by size
+        root_u = self.find(u)  # Find root of u
+        root_v = self.find(v)  # Find root of v
+        if root_u != root_v:
+            # Attach smaller tree under root of larger tree
+            if self.size[root_u] < self.size[root_v]:
+                self.parent[root_u] = root_v
+                self.size[root_v] += self.size[root_u]
+            else:
+                self.parent[root_v] = root_u
+                self.size[root_u] += self.size[root_v]
+
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n = len(isConnected)
+        dsu = DisjointSetUnion(n)
+        
+        # Union nodes if they are connected
+        for i in range(n):
+            for j in range(n):
+                if isConnected[i][j] == 1:
+                    dsu.union(i, j)
+
+        # Count unique parents to determine the number of connected components
+        count = 0
+        for i in range(n):
+            if dsu.parent[i] == i:
+                count += 1
+
+        return count
+
+
+# Time Complexity: O(N * N)
+# Space Complexity: O(N) only recursive stack space
